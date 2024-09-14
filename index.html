@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamenJS1</title>
+</head>
+
+<body>
+    <h1>Pregunta 4</h1>
+    <h2>Agregar 10 actividades diarias a realizar y luego que visualice las que se completaron y quedaron pendientes
+        utilizando objetos, arreglos y funciones en javaScript.</h2>
+    <script>
+        //Arreglo de tareas
+        function crearTarea(descripcion) {
+            return {
+                descripcion: descripcion,
+                completado: false,
+                completar: function () {
+                    this.completado = true;
+                }
+            }
+        }
+        
+
+        //Arreglo de tareas
+        let tareas = [
+            crearTarea("Realizar Examen"),
+            crearTarea("Levantar pesas"),
+            crearTarea("Escribir código"),
+            crearTarea("Practicar Pyton"),
+            crearTarea("Elaborar bases de datos"),
+            crearTarea("Continuar proyecto de investigación"),
+            crearTarea("Avanzar gestión académica"),
+            crearTarea("Enviar reporte"),
+            crearTarea("Mandar correo"),
+            crearTarea("Salir a correr"),
+        ];
+
+        //Funcion para mostrar tareas
+        function mostrarTareas(tareas) {
+            tareas.forEach((tarea, index) => {
+                document.write(`<p>${index + 1}. ${tarea.descripcion} - ${tarea.completado ? "Completado" : "Pendiente"}</p>`);
+            });
+        }
+
+        function marcarComoCompletado(tareas, index) {
+            if (tareas[index] && typeof tareas[index].completar === 'function') {
+                tareas[index].completar();
+            } else {
+                tareas[index].completar();
+            }
+        }
+
+        //Mostrar tareas iniciales
+        document.write("<h2>Tareas iniciales:</h2>");
+        mostrarTareas(tareas);
+
+        //Marcar la primera tarea como completada
+        marcarComoCompletado(tareas, 0);
+        marcarComoCompletado(tareas, 1);
+        marcarComoCompletado(tareas, 4);
+        marcarComoCompletado(tareas, 5);
+        marcarComoCompletado(tareas, 6);
+        marcarComoCompletado(tareas, 8);
+
+        //Mostrar tareas después de completar una
+        document.write("<h2>Tareas después de completar una:</h2>")
+        mostrarTareas(tareas);
+    </script>
+</body>
+
+</html>
